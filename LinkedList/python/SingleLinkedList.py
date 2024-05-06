@@ -37,6 +37,45 @@ def removeLastNode(head):
     node.next = None
     return head
 
+def insertAtNthPosition(head, data, n):
+    dummy = Node(0)
+    dummy.next = head
+    slow = dummy
+    
+    for _ in range(n-1):
+        slow = slow.next
+    
+    newNode = Node(data)
+    newNode.next = slow.next
+    slow.next = newNode
+    
+    return dummy.next
+
+def deletingFromNthPosition(head, n):
+    dummy = Node(0)
+    dummy.next = head
+    
+    slow = dummy
+    
+    for _ in range(n-1):
+        slow = slow.next
+    
+    slow.next = slow.next.next
+    
+    return dummy.next
+
+def updateNthValue(head, data, n):
+    dummy = Node(n)
+    dummy.next = head
+    slow = dummy
+    
+    for _ in range(n-1):
+        slow = slow.next
+        
+    slow.next.data = data
+
+    return dummy.next
+
 #Creating a Linked List
 head = None
 
@@ -66,3 +105,36 @@ printList(head)
 head = removeLastNode(head)
 printList(head)
 
+#Inserting at a specific point in a linked List
+head = insertAtNthPosition(head, 1, 1)
+printList(head)
+head = insertAtNthPosition(head, 10, 10)
+printList(head)
+
+head = insertAtNthPosition(head, 7, 7)
+printList(head)
+
+
+
+#Deleting from a specific point in a linked list
+head = deletingFromNthPosition(head, 7)
+printList(head)
+head = deletingFromNthPosition(head, 10)
+printList(head)
+head = deletingFromNthPosition(head, 9)
+printList(head)
+head = deletingFromNthPosition(head, 8)
+printList(head)
+head = deletingFromNthPosition(head, 1)
+printList(head)
+
+
+#update a node's value
+head = updateNthValue(head, 100, 1)
+printList(head)
+head = updateNthValue(head, 200, 2)
+printList(head)
+head = updateNthValue(head, 400, 4)
+printList(head)
+head = updateNthValue(head, 600, 6)
+printList(head)
