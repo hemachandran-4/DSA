@@ -48,8 +48,10 @@ def insertAtNthPosition(head, data, n):
     newNode = Node(data)
     newNode.next = slow.next
     slow.next = newNode
-    
+
     return dummy.next
+
+    
 
 def deletingFromNthPosition(head, n):
     dummy = Node(0)
